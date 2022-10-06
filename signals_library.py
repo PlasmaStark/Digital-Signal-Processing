@@ -39,15 +39,27 @@ def display(s,minim=-20,maxim=20):
     plt.show()
     
 def multiplication(a,b):
+    """
+    signal multiplication between a and b
+    """
     return lambda x : a(x)*b(x) 
 
 def convolution(a,b):
+    """
+    signal convolution of a and b
+    """
     return lambda n : int(nsum(lambda k : a(k)*b(n-k),[-inf,inf])) 
 
 def correlation(a,b):
+    """
+    correlation of signals a and b
+    """
     return lambda n : int(nsum(lambda k : a(k)*b(k-n),[-inf,inf]))
 
 def display_convolution(a,b,minim=-20,maxim=20):
+    """
+    signal convolution of a and b with display of a,b,conv(a,b)
+    """
     fig, ax = plt.subplots(3,1)
     x = np.linspace(minim,maxim,maxim-minim+1)
     ya = np.zeros(maxim-minim+1)
